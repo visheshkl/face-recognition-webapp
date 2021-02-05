@@ -115,7 +115,7 @@ class App extends Component{
             <FaceRecognition box={box} imageUrl={imageUrl}/>
           </div>
            :  (
-            this.state.route==='signin'? <Signin onRouteChange={this.onRouteChange}/> :
+            this.state.route==='signin'? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/> :
             <Register loadUser={this.loadUser}  onRouteChange={this.onRouteChange}/>
            )
           
