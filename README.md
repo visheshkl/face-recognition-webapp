@@ -19,6 +19,9 @@ FaceX is a web app that uses the Clarifai API to locate a face in a picture. Usi
 * particles.js
 * Postgresql
 * express
+* bcrypt-nodejs
+* knex
+
 
 ### APIs
 * <a href="https://clarifai.com/models/face-detection-image-recognition-model-a403429f2ddf4b49b307e318f00e528b-detection">Clarifai</a>
