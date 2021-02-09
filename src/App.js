@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/navigation';
 import Signin from './components/Signin/Signin'
 import Register from './components/Register/Register'
@@ -10,9 +9,6 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import './App.css';
 
-const app= new Clarifai.App({
-  apiKey: 'f2a81bb7a14c4ea7805ce9a7ee492a67'
-});
 
 const initialState={
       input: '',
@@ -68,12 +64,15 @@ class App extends Component{
 
   onSubmit=()=>{
     this.setState({imageUrl: this.state.input});
-    app.models
-      .predict(
-        Clarifai.FACE_DETECT_MODEL,
-        this.state.input)
+      fetch('https://peaceful-sands-93889.herokuapp.com/imageurl', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          input: this.state.input
+        })
+      })
+      .then(response => response.json())
       .then(response => {
-        console.log('hi', response)
         if (response) {
           fetch('https://peaceful-sands-93889.herokuapp.com/image', {
             method: 'put',
