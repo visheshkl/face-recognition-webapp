@@ -73,7 +73,8 @@ class App extends Component{
       })
       .then(response => response.json())
       .then(response => {
-        if (response) {
+        if (response && response.outputs[0].data.regions) {
+          console.log(response)
           fetch('https://peaceful-sands-93889.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
