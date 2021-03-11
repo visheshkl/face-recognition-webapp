@@ -92,6 +92,9 @@ class App extends Component{
         if(response.outputs[0].data.regions){
           this.displayFaceBox(this.calculateFaceLocation(response))
         }
+        else{
+          this.displayFaceBox({})
+        }
       })
       .catch(err => console.log(err));
   }
